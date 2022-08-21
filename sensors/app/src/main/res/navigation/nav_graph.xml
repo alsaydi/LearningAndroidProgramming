@@ -14,7 +14,11 @@
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+
+        <action android:id="@+id/action_sensor_list_to_detail"
+            app:destination="@id/SensorDetailFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/SecondFragment"
         android:name="com.example.appstart.SecondFragment"
@@ -23,6 +27,17 @@
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/SensorDetailFragment"
+        android:name="com.example.appstart.SensorDetailFragment"
+        android:label="@string/sensor_detail_label"
+        tools:layout="@layout/fragment_sensor_detail">
+
+        <action
+            android:id="@+id/detail_fragment_to_list_fragment"
             app:destination="@id/FirstFragment" />
     </fragment>
 </navigation>

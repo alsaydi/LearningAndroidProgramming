@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -17,10 +18,9 @@ import com.example.appstart.databinding.FragmentFirstBinding;
 
 import java.util.List;
 
-public class FirstFragment extends Fragment {
+public class FirstFragment extends Fragment implements AdapterView.OnItemClickListener {
     private FragmentFirstBinding binding;
     private SensorManager sensorManager;
-    private ListView sensorListView;
     private ListAdapter listAdapter;
     private List<Sensor> sensors;
 
@@ -42,6 +42,7 @@ public class FirstFragment extends Fragment {
             sensors = sensorManager.getSensorList(Sensor.TYPE_ALL);
             listAdapter = new ListAdapter(sensors, this.getActivity());
             binding.sensorsView.setAdapter(listAdapter);
+            binding.sensorsView.setOnItemClickListener(this);
         }
     }
 
@@ -59,4 +60,9 @@ public class FirstFragment extends Fragment {
         binding = null;
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+        NavHostFragment.findNavController(FirstFragment.this)
+                .navigate(R.id.action_sensor_list_to_detail);
+    }
 }
