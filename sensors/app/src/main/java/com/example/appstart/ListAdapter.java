@@ -21,6 +21,11 @@ public class ListAdapter extends BaseAdapter implements android.widget.ListAdapt
         this.sensors = sensors;
         this.activity = activity;
     }
+
+    @Override
+    public boolean hasStableIds() { return true; }
+
+
     @Override
     public boolean areAllItemsEnabled() {
         return true;

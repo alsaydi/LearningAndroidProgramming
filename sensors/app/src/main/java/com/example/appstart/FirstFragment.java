@@ -25,6 +25,7 @@ import java.util.Objects;
 public class FirstFragment extends Fragment implements AdapterView.OnItemClickListener {
     private FragmentFirstBinding binding;
     private ListAdapter listAdapter;
+    private SensorsViewModel sensorsViewModel;
 
     @Override
     public View onCreateView(
@@ -39,7 +40,7 @@ public class FirstFragment extends Fragment implements AdapterView.OnItemClickLi
     }
 
     private void buildSensorsList() {
-        SensorsViewModel sensorsViewModel = new ViewModelProvider(requireActivity()).get(SensorsViewModel.class);
+        sensorsViewModel = new ViewModelProvider(requireActivity()).get(SensorsViewModel.class);
         Activity activity = this.getActivity();
         sensorsViewModel.getSensors(this.requireActivity()).observe(getViewLifecycleOwner(), new Observer<List<Sensor>>() {
             @Override
@@ -63,10 +64,12 @@ public class FirstFragment extends Fragment implements AdapterView.OnItemClickLi
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+        sensorsViewModel = null;
     }
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+        sensorsViewModel.selectItem(id);
         NavHostFragment.findNavController(FirstFragment.this)
                 .navigate(R.id.action_sensor_list_to_detail);
     }
