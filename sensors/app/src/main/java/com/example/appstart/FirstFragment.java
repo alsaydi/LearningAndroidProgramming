@@ -1,5 +1,6 @@
 package com.example.appstart;
 
+import android.app.Activity;
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
@@ -12,17 +13,18 @@ import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.appstart.databinding.FragmentFirstBinding;
 
 import java.util.List;
+import java.util.Objects;
 
 public class FirstFragment extends Fragment implements AdapterView.OnItemClickListener {
     private FragmentFirstBinding binding;
-    private SensorManager sensorManager;
     private ListAdapter listAdapter;
-    private List<Sensor> sensors;
 
     @Override
     public View onCreateView(
@@ -37,13 +39,16 @@ public class FirstFragment extends Fragment implements AdapterView.OnItemClickLi
     }
 
     private void buildSensorsList() {
-        sensorManager = (SensorManager) this.getActivity().getSystemService(Context.SENSOR_SERVICE);
-        if(sensorManager != null) {
-            sensors = sensorManager.getSensorList(Sensor.TYPE_ALL);
-            listAdapter = new ListAdapter(sensors, this.getActivity());
-            binding.sensorsView.setAdapter(listAdapter);
-            binding.sensorsView.setOnItemClickListener(this);
-        }
+        SensorsViewModel sensorsViewModel = new ViewModelProvider(requireActivity()).get(SensorsViewModel.class);
+        Activity activity = this.getActivity();
+        sensorsViewModel.getSensors(this.requireActivity()).observe(getViewLifecycleOwner(), new Observer<List<Sensor>>() {
+            @Override
+            public void onChanged(List<Sensor> sensors) {
+                listAdapter = new ListAdapter(sensors, activity);
+                binding.sensorsView.setAdapter(listAdapter);
+            }
+        });
+        binding.sensorsView.setOnItemClickListener(this);
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
