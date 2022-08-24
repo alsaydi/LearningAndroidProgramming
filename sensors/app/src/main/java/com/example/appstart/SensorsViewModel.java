@@ -3,18 +3,17 @@ package com.example.appstart;
 import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
-import android.os.Build;
 
-import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import java.util.List;
+import java.util.Objects;
 
 public class SensorsViewModel extends ViewModel {
     private final MutableLiveData<List<Sensor>> sensorsLiveData = new MutableLiveData<>();
-    private long selectedSensorId;
+    private int sensorType;
 
     public LiveData<List<Sensor>> getSensors(Context context) {
         SensorManager sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
@@ -25,18 +24,17 @@ public class SensorsViewModel extends ViewModel {
         return sensorsLiveData;
     }
 
-    public void selectItem(long sensorId) {
-        if(sensorsLiveData.getValue().isEmpty()) {
+    public void selectItem(long sensorType) {
+        if(Objects.requireNonNull(sensorsLiveData.getValue()).isEmpty()) {
             return;
         }
 
-        selectedSensorId = sensorId;
+        this.sensorType = (int)sensorType;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     public LiveData<Sensor> getSelectedSensor() {
-        for(Sensor sensor : sensorsLiveData.getValue()) {
-            if(sensor.getId() == selectedSensorId) {
+        for(Sensor sensor : Objects.requireNonNull(sensorsLiveData.getValue())) {
+            if(sensor.getType() == sensorType) {
                 return new MutableLiveData<>(sensor);
             }
         }

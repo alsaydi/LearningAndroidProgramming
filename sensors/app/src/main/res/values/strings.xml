@@ -11,4 +11,8 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
     <string name="sensor_detail_label">Sensor Detail</string>
+    <string name="get_sensor_values">Get Sensor Values</string>
+
+    <string name="available">Available</string>
+    <string name="not_available">Not Available</string>
 </resources>

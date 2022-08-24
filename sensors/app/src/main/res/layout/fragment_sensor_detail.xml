@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,7 +7,7 @@
     tools:context=".SensorDetailFragment">
 
     <TextView
-        android:id="@+id/sensorname"
+        android:id="@+id/sensor_name_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -21,14 +21,14 @@
         android:id="@+id/sensor_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/sensorname"
+        android:layout_below="@+id/sensor_name_label"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
         android:textColor="@android:color/darker_gray"
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/sensorrange"
+        android:id="@+id/sensor_range_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/sensor_name"
@@ -43,14 +43,14 @@
         android:id="@+id/sensor_range"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/sensorrange"
+        android:layout_below="@+id/sensor_range_label"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
         android:textColor="@android:color/darker_gray"
         />
 
     <TextView
-        android:id="@+id/sensormindelay"
+        android:id="@+id/sensor_min_delay_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/sensor_range"
@@ -62,20 +62,20 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/sensor_mindelay"
+        android:id="@+id/sensor_min_delay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/sensormindelay"
+        android:layout_below="@+id/sensor_min_delay_label"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
         android:textColor="@android:color/darker_gray"
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/sensorpower"
+        android:id="@+id/sensor_power_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/sensor_mindelay"
+        android:layout_below="@+id/sensor_min_delay"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:text="Sensor Power"
@@ -87,14 +87,14 @@
         android:id="@+id/sensor_power"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/sensorpower"
+        android:layout_below="@+id/sensor_power_label"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
         android:textColor="@android:color/darker_gray"
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/sensorresolution"
+        android:id="@+id/sensor_resolution_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/sensor_power"
@@ -109,14 +109,14 @@
         android:id="@+id/sensor_resolution"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/sensorresolution"
+        android:layout_below="@+id/sensor_resolution_label"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
         android:textColor="@android:color/darker_gray"
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/sensorvendor"
+        android:id="@+id/sensor_vendor_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/sensor_resolution"
@@ -131,14 +131,14 @@
         android:id="@+id/sensor_vendor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/sensorvendor"
+        android:layout_below="@+id/sensor_vendor_label"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
         android:textColor="@android:color/darker_gray"
         android:textSize="16sp" />
 
     <TextView
-        android:id="@+id/sensorversion"
+        android:id="@+id/sensor_version_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/sensor_vendor"
@@ -153,28 +153,27 @@
         android:id="@+id/sensor_version"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/sensorversion"
+        android:layout_below="@+id/sensor_version_label"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
         android:textColor="@android:color/darker_gray"
         android:textSize="16sp" />
 
-<!--    <Button-->
-<!--        android:id="@+id/showvalues"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@+id/sensor_version"-->
-<!--        android:layout_marginLeft="10dp"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:text="Get Sensor Values" />-->
+    <Button
+        android:id="@+id/show_values"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sensor_version"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/get_sensor_values" />
 
-<!--    <Button-->
-<!--        android:id="@+id/button_sensors"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="@string/previous"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/showvalues"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/showvalues" />-->
-</FrameLayout>
+    <Button
+        android:id="@+id/button_sensors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/show_values"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/previous" />
+</RelativeLayout>

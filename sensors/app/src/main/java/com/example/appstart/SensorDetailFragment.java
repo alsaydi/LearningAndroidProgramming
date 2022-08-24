@@ -18,7 +18,6 @@ import com.example.appstart.databinding.FragmentSensorDetailBinding;
 
 public class SensorDetailFragment extends Fragment {
 
-    private SensorDetailViewModel mViewModel;
     private FragmentSensorDetailBinding binding;
 
     public static SensorDetailFragment newInstance() {
@@ -32,7 +31,6 @@ public class SensorDetailFragment extends Fragment {
         return binding.getRoot();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -41,10 +39,10 @@ public class SensorDetailFragment extends Fragment {
             if(sensor == null) {
                 return;
             }
-            binding.sensorName.setText(String.format("%d - %s\n", sensor.getId(), sensor.getName()));
+            binding.sensorName.setText(String.format("%d - %s\n", sensor.getType(), sensor.getName()));
         });
 
-//        binding.buttonSensors.setOnClickListener(view1 -> NavHostFragment.findNavController(SensorDetailFragment.this)
-//                .navigate(R.id.detail_fragment_to_list_fragment));
+        binding.buttonSensors.setOnClickListener(view1 -> NavHostFragment.findNavController(SensorDetailFragment.this)
+                .navigate(R.id.detail_fragment_to_list_fragment));
     }
 }

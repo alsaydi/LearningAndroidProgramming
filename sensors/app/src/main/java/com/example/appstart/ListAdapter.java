@@ -56,7 +56,7 @@ public class ListAdapter extends BaseAdapter implements android.widget.ListAdapt
         if (sensor == null) {
             return -1L;
         }
-        return sensor.getId();
+        return sensor.getType();
     }
 
     @Override
