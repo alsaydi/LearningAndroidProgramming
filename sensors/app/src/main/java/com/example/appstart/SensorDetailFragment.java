@@ -40,9 +40,19 @@ public class SensorDetailFragment extends Fragment {
                 return;
             }
             binding.sensorName.setText(String.format("%d - %s\n", sensor.getType(), sensor.getName()));
+            binding.sensorMinDelay.setText(String.valueOf(sensor.getMinDelay()));
+            binding.sensorPower.setText(String.valueOf(sensor.getPower()));
+            binding.sensorRange.setText(String.valueOf(sensor.getMaximumRange()));
+            binding.sensorResolution.setText(String.valueOf(sensor.getResolution()));
+            binding.sensorVendor.setText(String.valueOf(sensor.getVendor()));
+            binding.sensorVersion.setText(String.valueOf(sensor.getVersion()));
         });
 
         binding.buttonSensors.setOnClickListener(view1 -> NavHostFragment.findNavController(SensorDetailFragment.this)
                 .navigate(R.id.detail_fragment_to_list_fragment));
+
+        binding.showValues.setOnClickListener(view1 -> NavHostFragment.findNavController(SensorDetailFragment.this)
+                .navigate(R.id.detail_fragment_to_values));
+
     }
 }

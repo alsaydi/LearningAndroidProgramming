@@ -39,5 +39,15 @@
         <action
             android:id="@+id/detail_fragment_to_list_fragment"
             app:destination="@id/FirstFragment" />
+
+        <action android:id="@+id/detail_fragment_to_values"
+            app:destination="@id/SensorValuesFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/SensorValuesFragment"
+        android:name="com.example.appstart.SensorValuesFragment"
+        android:label="@string/sensor_values"
+        tools:layout="@layout/fragment_sensor_values">
     </fragment>
 </navigation>

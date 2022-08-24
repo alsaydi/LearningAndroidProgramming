@@ -52,6 +52,7 @@ public class FirstFragment extends Fragment implements AdapterView.OnItemClickLi
         binding.sensorsView.setOnItemClickListener(this);
     }
 
+    @Override
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 

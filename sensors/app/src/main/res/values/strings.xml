@@ -15,4 +15,5 @@
 
     <string name="available">Available</string>
     <string name="not_available">Not Available</string>
+    <string name="sensor_values">Sensor Values</string>
 </resources>
